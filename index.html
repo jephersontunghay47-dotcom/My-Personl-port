@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jepherson I. Tunghay – Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div>
+      <a class="brand" href="#home" data-go="home">Jepherson I. Tunghay<span>Student</span></a>
+      <nav aria-label="Main">
+        <ul>
+          <li><button data-go="home">Home</button></li>
+          <li><button data-go="about">About</button></li>
+          <li><button data-go="projects">Projects</button></li>
+          <li><button data-go="contact">Contact</button></li>
+        </ul>
+      </nav>
+    </div>
+    <button class="theme" id="theme" type="button">Switch theme</button>
+  </aside>
+
+  <main id="main" tabindex="-1">
+    <section class="view hero" id="home" aria-label="Home">
+      <h1>Hi, I’m Jepherson. I’m learning to build <mark>websites</mark>.</h1>
+      <p>I’m a student learning web development with HTML, CSS, and JavaScript, and I’m turning what I learn into real projects.</p>
+      <div class="btns">
+        <button class="btn primary" data-go="projects" type="button">See my projects</button>
+        <button class="btn" data-go="contact" type="button">Get in touch</button>
+      </div>
+    </section>
+
+    <section class="view" id="about" aria-label="About">
+      <h2>About me</h2>
+      <div class="about">
+        <div>
+          <p>I’m Jepherson I. Tunghay, a student who is learning web development. I enjoy turning ideas into simple, good-looking websites.</p>
+          <p>I’m still building my skills, and every project teaches me something new about layout, design, and JavaScript.</p>
+          <p>I’m looking for chances to learn, practice, and grow as a developer.</p>
+        </div>
+        <div>
+          <svg class="avatar" viewBox="0 0 120 120" role="img" aria-label="Profile picture placeholder"><rect width="120" height="120" rx="24" fill="var(--accent)"/><circle cx="60" cy="46" r="20" fill="var(--accent-ink)"/><path d="M20 112c4-26 20-38 40-38s36 12 40 38z" fill="var(--accent-ink)"/><circle cx="98" cy="22" r="9" fill="var(--mark)"/></svg>
+          <div class="sub">Skills</div>
+          <ul class="skills">
+            <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Responsive design</li><li>Problem solving</li><li>Teamwork</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="projects" aria-label="Projects">
+      <h2>Projects</h2>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="web" aria-pressed="false">Websites</button>
+        <button type="button" data-filter="app" aria-pressed="false">Apps</button>
+      </div>
+      <div class="grid">
+        <article class="card" data-type="web"><div class="thumb" style="background:#2F4BFF">Aa</div><div class="body"><h3>My portfolio website</h3><p>The site you’re looking at now, built to show my work.</p><span class="tag">HTML, CSS, JavaScript</span></div></article>
+        <article class="card" data-type="app"><div class="thumb" style="background:#0E7C66">✓</div><div class="body"><h3>Task tracker</h3><p>A simple to-do app with categories and due dates.</p><span class="tag">React, local storage</span></div></article>
+        <article class="card" data-type="web"><div class="thumb" style="background:#B5338A">Ph</div><div class="body"><h3>Photo portfolio</h3><p>A fast gallery for a local photographer with lazy loading.</p><span class="tag">HTML, CSS</span></div></article>
+        <article class="card" data-type="app"><div class="thumb" style="background:#D9480F">°C</div><div class="body"><h3>Weather dashboard</h3><p>Shows a five-day forecast for any city you search.</p><span class="tag">JavaScript, API</span></div></article>
+      </div>
+    </section>
+
+    <section class="view" id="contact" aria-label="Contact">
+      <h2>Contact</h2>
+      <div class="contact">
+        <div>
+          <p>Have a project or a question? Fill in the form and your email app will open with your message ready to send.</p>
+          <p>Or write to <a href="mailto:jephersontunghay47@gmail.com">jephersontunghay47@gmail.com</a>.</p>
+        </div>
+        <form id="form" novalidate>
+          <label>Name<input id="name" autocomplete="name"><span class="err" id="e-name"></span></label>
+          <label>Email<input id="email" type="email" autocomplete="email"><span class="err" id="e-email"></span></label>
+          <label>Message<textarea id="msg"></textarea><span class="err" id="e-msg"></span></label>
+          <button class="btn primary" type="submit">Send message</button>
+          <div class="status" id="status" role="status"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
