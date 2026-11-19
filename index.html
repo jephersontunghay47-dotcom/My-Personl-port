@@ -118,18 +118,42 @@
         <h2>Contact</h2>
         <div class="contact">
           <div>
-            <p>Have a project or a question? Fill in the form and your email app will open with your message ready to
-              send.</p>
+            <p>Have a project or a question? Fill in the form
+              and I'll receive your message directly.</p>
             <p>Or write to <a href="mailto:jephersontunghay47@gmail.com">jephersontunghay47@gmail.com</a>.</p>
           </div>
-          <form id="form" novalidate>
-            <label>Name<input id="name" autocomplete="name"><span class="err" id="e-name"></span></label>
-            <label>Email<input id="email" type="email" autocomplete="email"><span class="err"
-                id="e-email"></span></label>
-            <label>Message<textarea id="msg"></textarea><span class="err" id="e-msg"></span></label>
-            <button class="btn primary" type="submit">Send message</button>
+
+          <form id="form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+
+            <!-- Web3Forms Access Key -->
+            <input type="hidden" name="access_key" value="a494f28f-46ae-497c-a96c-58aeb0f24682">
+
+            <label>
+              Name
+              <input id="name" name="name" autocomplete="name">
+              <span class="err" id="e-name"></span>
+            </label>
+
+            <label>
+              Email
+              <input id="email" name="email" type="email" autocomplete="email">
+              <span class="err" id="e-email"></span>
+            </label>
+
+            <label>
+              Message
+              <textarea id="msg" name="message"></textarea>
+              <span class="err" id="e-msg"></span>
+            </label>
+
+            <button class="btn primary" type="submit">
+              Send message
+            </button>
+
             <div class="status" id="status" role="status"></div>
+
           </form>
+
         </div>
       </section>
     </main>

@@ -33,22 +33,81 @@
   /* contact form */
   var form = document.getElementById("form");
   function setErr(id, msg) { document.getElementById("e-" + id).textContent = msg; return !msg; }
-  form.addEventListener("submit", function (e) {
+
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
+
     var n = document.getElementById("name").value.trim();
     var m = document.getElementById("email").value.trim();
     var t = document.getElementById("msg").value.trim();
+
     var ok = true;
+
+    // Validate name
     ok = setErr("name", n ? "" : "Enter your name.") && ok;
-    ok = setErr("email", /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m) ? "" : "Enter a valid email, like name@example.com.") && ok;
-    ok = setErr("msg", t.length >= 10 ? "" : "Write at least 10 characters.") && ok;
+
+    // Validate email
+    ok = setErr(
+      "email",
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)
+        ? ""
+        : "Enter a valid email, like name@example.com."
+    ) && ok;
+
+    // Validate message
+    ok = setErr(
+      "msg",
+      t.length >= 10 ? "" : "Write at least 10 characters."
+    ) && ok;
+
     var s = document.getElementById("status");
-    if (!ok) { s.textContent = ""; return; }
-    var body = encodeURIComponent(t + "\n\n– " + n + " (" + m + ")");
-    window.location.href = "mailto:jephersontunghay47@gmail.com?subject=" + encodeURIComponent("Message from " + n) + "&body=" + body;
-    s.textContent = "Opening your email app…";
-    form.reset();
+
+    if (!ok) {
+      s.textContent = "";
+      return;
+    }
+
+    // Send message through Web3Forms
+    var button = form.querySelector('button[type="submit"]');
+
+    button.disabled = true;
+    button.textContent = "Sending...";
+    s.textContent = "";
+
+    try {
+      var formData = new FormData(form);
+
+      const response = await fetch(
+        "https://api.web3forms.com/submit",
+        {
+          method: "POST",
+          body: formData
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.success) {
+        s.textContent = "Message sent successfully! Thank you.";
+        form.reset();
+
+        // Clear validation messages
+        setErr("name", "");
+        setErr("email", "");
+        setErr("msg", "");
+
+      } else {
+        s.textContent = "Error: " + (result.message || "Unknown error");
+      }
+
+    } catch (error) {
+      s.textContent = "Something went wrong. Please try again.";
+    }
+
+    button.disabled = false;
+    button.textContent = "Send message";
   });
+
 
   /* theme toggle */
   var root = document.documentElement;
