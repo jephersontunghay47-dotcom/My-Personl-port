@@ -325,14 +325,6 @@ h2 {
   flex-direction: column
 }
 
-.thumb {
-  height: 130px;
-  display: grid;
-  place-items: center;
-  font: 800 2.6rem var(--display);
-  color: #fff
-}
-
 .card .body {
   padding: 1.1rem 1.2rem 1.3rem
 }
@@ -488,4 +480,13 @@ textarea {
   .btn:hover {
     transform: none
   }
+}
+
+.link {
+  text-decoration: none;
+  color: #667ece;
+}
+
+.link:hover {
+  color: #C62828;
 }
